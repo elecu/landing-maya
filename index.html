@@ -24,15 +24,38 @@
     </p>
   </header>
 
-  <!-- Netlify Signup Form -->
-  <section id="netlify-signup">
-    <form name="notify" method="POST" data-netlify="true" id="signup-form">
-      <input type="hidden" name="form-name" value="notify">
-      <label for="email">Email address</label>
-      <input type="email" id="email" name="email" placeholder="yourname@example.com" required />
-      <button type="submit">Notify me</button>
-    </form>
-  </section>
+<section id="netlify-signup">
+  <form
+    name="notify"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+  >
+    <!-- campo anti-bot invisible -->
+    <p hidden>
+      <label>
+        Don’t fill this out if you’re human:
+        <input name="bot-field" />
+      </label>
+    </p>
+
+    <!-- necesario para Netlify -->
+    <input type="hidden" name="form-name" value="notify" />
+
+    <!-- tu campo de email -->
+    <label for="email">Email address</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="yourname@example.com"
+      required
+    />
+
+    <button type="submit">Notify me</button>
+  </form>
+</section>
+
 
 
 
