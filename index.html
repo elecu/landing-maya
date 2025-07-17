@@ -10,62 +10,127 @@
   <title>māyā | MAchine learning pYthon Application</title>
   <meta name="description" content="māyā analyses LHCO data files using machine learning. Sign up to be notified when the final release is available." />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    /* == Scroll Snap Container == */
+    .pages {
+      height: 100vh;                /* ocupa toda la ventana */
+      overflow-y: auto;             /* activa scroll vertical */
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      /* Scrollbar fino y estilizado */
+      scrollbar-width: thin;                                      /* Firefox */
+      scrollbar-color: rgba(255,255,255,0.5) transparent;        /* Firefox */
+    }
+    .pages::-webkit-scrollbar {
+      width: 6px;                    /* grosor */
+    }
+    .pages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .pages::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.5);
+      border-radius: 3px;
+    }
+    .pages::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(255,255,255,0.8);
+    }
 
- 
+    /* == Cada “pantalla” == */
+    .panel {
+      height: 100vh;               /* pantalla completa */
+      scroll-snap-align: start;    /* encaja al inicio */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2em;
+    }
+
+    /* Contenedor central con ancho máximo igual que antes */
+    .panel .inner {
+      max-width: 1800px;           /* ajusta a tu ancho anterior */
+      width: 90%;
+      margin: 0 auto;
+      padding: 2em 1em;
+    }
+  </style>
 </head>
 <body class="is-preload">
 
-  <!-- Header -->
-  <header id="header">
-    <h1>māyā</h1>
-    <p>
-      A MAchine learning pYthon Application for high‑energy physics.<br />
-      Enter your email below and we'll let you know when the final release is available.
-    </p>
-  </header>
+  <div class="pages">
 
-<section id="netlify-signup">
-  <form
-    name="notify"
-    method="POST"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
-  >
+    <!-- PANTALLA 1: Landing actual -->
+    <section class="panel" id="home">
+      <div class="inner">
+        <!-- Header -->
+        <header id="header">
+          <!-- Logo SVG centralizado -->
+          <div class="logo-container">
+            <img src="images/logow.svg" alt="māyā logo">
+          </div>
+          <p>
+            A MAchine learning pYthon Application for high‑energy physics.<br />
+            Enter your email below and we'll let you know when the final release is available.
+          </p>
+        </header>
 
-    <!-- campo anti-bot invisible -->
-    <p hidden>
-      <label>
-        Don’t fill this out if you're human:
-        <input name="bot-field" />
-      </label>
-    </p>
+        <section id="netlify-signup">
+          <form
+            name="notify"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
 
-    <!-- necesario para Netlify -->
-    <input type="hidden" name="form-name" value="notify" />
+            <!-- campo anti-bot invisible -->
+            <p hidden>
+              <label>
+                Don’t fill this out if you're human:
+                <input name="bot-field" />
+              </label>
+            </p>
 
-    <!-- tu campo de email -->
-    <label for="email">Email address</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="yourname@example.com"
-      required
-    />
+            <!-- necesario para Netlify -->
+            <input type="hidden" name="form-name" value="notify" />
 
-    <button type="submit">Notify me</button>
-  </form>
-</section>
+            <!-- tu campo de email -->
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="yourname@example.com"
+              required
+              style="width:16em; max-width:100%;"
+            />
 
+            <button type="submit">Notify me</button>
+          </form>
+        </section>
+      </div>
+    </section>
 
+    <!-- PANTALLA 2: Más información -->
+    <section class="panel" id="features">
+      <div class="inner">
+        <h2>Features</h2>
+        <p>– Fast LHCO data analysis<br>
+           – XGBoost & BDT<br>
+           – Easy interface</p>
+        <p>Stay tuned for the full release!</p>
+      </div>
+    </section>
 
+    <!-- Añade más <section class="panel"> si quieres más pantallas -->
+
+  </div>
 
   <!-- Footer -->
   <footer id="footer">
     <ul class="icons">
-      <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-      <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-      <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+      <!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li> -->
+      <!-- <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li> -->
+      <!-- <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li> -->
     </ul>
     <ul class="copyright">
       <li>&copy; 2025 māyā.</li>
@@ -74,7 +139,8 @@
   </footer>
 
   <!-- Scripts -->
- <script src="assets/js/main.js"></script> 
+  <script src="assets/js/main.js"></script>
   
 </body>
 </html>
+

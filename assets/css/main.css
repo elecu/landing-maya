@@ -808,7 +808,8 @@ button,
   #signup-form input[type="text"],
   #signup-form input[type="password"],
   #signup-form input[type="email"] {
-    width: 18em; }
+    width: 12em; 
+    max-width: 100%;}
   #signup-form > * {
     margin: 0 0 0 1em; }
   #signup-form > :first-child {
@@ -886,4 +887,79 @@ button,
       margin: 1em 0 0 0;
       position: relative; } }
 
+}
+/* Logo at center */
+#header .logo-container {
+  text-align: center;      
+  /*margin-bottom: 0.02em;      /* separa el párrafo*/
+}
+#header .logo-container img {
+  max-width: 600px;        
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+/* Contenedor scrollable */
+.pages {
+  height: 100vh;               /* ocupa toda la ventana */
+  overflow-y: scroll;          /* activa scroll vertical */
+  scroll-snap-type: y mandatory;
+}
+
+/* Cada “pantalla” */
+.panel {
+  height: 100vh;               /* pantalla completa */
+  scroll-snap-align: start;    /* encaja al inicio */
+  /* opcional: centra el contenido dentro de cada panel */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+}
+
+/* Smooth scrolling moderno */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ocultar scrollbar en .pages, pero mantener el scroll activo */
+/* .pages { */
+  /* Firefox */
+  /* scrollbar-width: none;*/
+  /* IE 10+ */
+  -ms-overflow-style: none;*/
+/* }*/
+
+/* Webkit (Chrome, Safari, Edge…) */
+/* .pages::-webkit-scrollbar {*/
+  /*display: none;*/
+}
+
+
+/* == Scrollbar en .pages == */
+/* Firefox */
+.pages {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.5) transparent;
+}
+
+/* Webkit (Chrome, Safari, Edge…) */
+.pages::-webkit-scrollbar {
+  width: 6px;               /* grosor de la barra */
+}
+
+.pages::-webkit-scrollbar-track {
+  background: transparent;  /* el fondo, transparente */
+}
+
+.pages::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.5);  /* color del pulgar */
+  border-radius: 3px;                       /* bordes redondeados */
+  border: 1px solid transparent;            /* pequeño margen */
+}
+
+.pages::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255,255,255,0.8);
 }
