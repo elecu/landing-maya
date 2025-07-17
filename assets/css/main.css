@@ -885,3 +885,20 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+/* Limita el ancho del formulario y centrarlo */
+#netlify-signup {
+  display: flex;
+  justify-content: center;
+}
+
+#netlify-signup form {
+  max-width: 400px;       /* ancho máximo deseado */
+  width: 100%;            /* que crezca hasta ese máximo */
+}
+
+/* Opcional: si sólo quieres limitar el input y dejar el botón fuera */
+#netlify-signup input[type="email"] {
+  max-width: 300px;       /* ancho máximo del campo de email */
+  width: 100%;
+  box-sizing: border-box; /* para que padding no haga overflow */
+}
