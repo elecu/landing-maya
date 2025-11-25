@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<!--
+  māyā – Downloads page
+  Hidden from home, used only via purchase email
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>māyā | Downloads</title>
+  <meta name="description" content="Download māyā for Ubuntu, Fedora, Windows, and macOS." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Same CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <style>
+    /* == Scroll Snap Container == */
+    .pages {
+      height: 100vh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Full-screen panels */
+    .panel {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2em;
+    }
+
+    /* Central container */
+    .panel .inner {
+      max-width: 1800px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 2em 1em;
+    }
+
+    /* Logo like home */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5em;
+    }
+    .logo-container img {
+      max-width: 220px;
+      width: 60%;
+      height: auto;
+    }
+
+    /* Version badge */
+    .version-badge {
+      display: inline-block;
+      margin-top: 0.8em;
+      padding: 0.35em 0.8em;
+      border-radius: 999px;
+      font-size: 0.95em;
+      letter-spacing: 0.3px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      opacity: 0.9;
+    }
+
+    /* Download picker (single dropdown + button) */
+    .download-picker {
+      max-width: 560px;
+      margin: 2.2em auto 0 auto;
+      text-align: center;
+    }
+    .download-picker .field {
+      text-align: left;
+      margin-bottom: 1em;
+    }
+    .download-picker label {
+      display: block;
+      margin-bottom: 0.4em;
+      font-size: 0.95em;
+      opacity: 0.85;
+    }
+    .download-picker select {
+      width: 100%;
+      padding: 0.85em 1em;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.25);
+      color: #fff;
+      font-size: 1em;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      backdrop-filter: blur(6px);
+    }
+    .download-picker select:focus {
+      border-color: rgba(255,255,255,0.35);
+    }
+    .download-picker .button {
+      width: 100%;
+      margin-top: 0.6em;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .download-note {
+      margin-top: 1em;
+      font-size: 0.95em;
+      opacity: 0.8;
+      text-align: center;
+    }
+
+    .note {
+      margin-top: 2em;
+      font-size: 0.95em;
+      opacity: 0.8;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body class="is-preload">
+  <div class="pages">
+
+    <section class="panel">
+      <div class="inner">
+
+        <header id="header">
+          <div class="logo-container">
+            <img src="../images/logow.svg" alt="māyā logo">
+          </div>
+
+          <h1>Downloads</h1>
+          <p>
+            Select your OS and download the latest stable build of <em>māyā</em>.
+          </p>
+
+          <!-- Version shown ONCE here -->
+          <div class="version-badge" id="maya-version-badge">
+            māyā version: <span id="maya-version-text">v0.9-beta</span>
+          </div>
+        </header>
+
+        <!-- Single dropdown + one download button.
+             Files live in subfolders, ONE latest build each:
+               downloads/files/ubuntu/maya
+               downloads/files/fedora/maya
+               downloads/files/windows/maya.exe
+               downloads/files/macos/maya.dmg
+        -->
+        <div class="download-picker">
+          <div class="field">
+            <label for="download-select">Select your build</label>
+            <select id="download-select">
+              <optgroup label="Linux">
+                <option value="files/ubuntu/maya">Ubuntu 22.04+</option>
+                <option value="files/fedora/maya">Fedora 38+</option>
+              </optgroup>
+
+              <optgroup label="Windows">
+                <option value="files/windows/maya.exe">Windows 10/11</option>
+              </optgroup>
+
+              <optgroup label="macOS">
+                <option value="files/macos/maya.dmg">macOS 12+</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <a id="download-btn" class="button primary" href="files/ubuntu/maya" download>
+            Download māyā
+          </a>
+
+          <p class="download-note" id="download-note">
+            Ubuntu 22.04+
+          </p>
+        </div>
+
+        <p class="note">
+          Tip: keep this link bookmarked — you’ll get free updates for a year.
+        </p>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Same JS -->
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    // === EDIT VERSION ONLY HERE ===
+    const MAYA_VERSION = "v0.9-beta";
+
+    // Put version on the badge (only once on page)
+    document.getElementById("maya-version-text").textContent = MAYA_VERSION;
+
+    // Picker logic
+    const select = document.getElementById("download-select");
+    const btn = document.getElementById("download-btn");
+    const note = document.getElementById("download-note");
+
+    function refreshDownload() {
+      const url = select.value;
+      const label = select.options[select.selectedIndex].text;
+
+      btn.href = url;
+      note.textContent = label;
+    }
+
+    select.addEventListener("change", refreshDownload);
+    refreshDownload();
+  </script>
+</body>
+</html>
+
