@@ -13,16 +13,16 @@
   <style>
     /* == Scroll Snap Container == */
     .pages {
-      height: 100vh;                /* ocupa toda la ventana */
-      overflow-y: auto;             /* activa scroll vertical */
+      height: 100vh;                /* full viewport height */
+      overflow-y: auto;             /* enable vertical scroll */
       scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
-      /* Scrollbar fino y estilizado */
+      /* Thin styled scrollbar */
       scrollbar-width: thin;                                      /* Firefox */
       scrollbar-color: rgba(255,255,255,0.5) transparent;        /* Firefox */
     }
     .pages::-webkit-scrollbar {
-      width: 6px;                    /* grosor */
+      width: 6px;                    /* thickness */
     }
     .pages::-webkit-scrollbar-track {
       background: transparent;
@@ -35,10 +35,10 @@
       background-color: rgba(255,255,255,0.8);
     }
 
-    /* == Cada “pantalla” == */
+    /* == Each full-screen panel == */
     .panel {
-      height: 100vh;               /* pantalla completa */
-      scroll-snap-align: start;    /* encaja al inicio */
+      height: 100vh;               /* full screen */
+      scroll-snap-align: start;    /* snap to top */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -46,9 +46,9 @@
       padding: 2em;
     }
 
-    /* Contenedor central con ancho máximo igual que antes */
+    /* Central container with same max width as before */
     .panel .inner {
-      max-width: 1800px;           /* ajusta a tu ancho anterior */
+      max-width: 1800px;
       width: 90%;
       margin: 0 auto;
       padding: 2em 1em;
@@ -59,18 +59,18 @@
 
   <div class="pages">
 
-    <!-- PANTALLA 1: Landing actual -->
+    <!-- PANEL 1: Landing -->
     <section class="panel" id="home">
       <div class="inner">
         <!-- Header -->
         <header id="header">
-          <!-- Logo SVG centralizado -->
+          <!-- Centered SVG logo -->
           <div class="logo-container">
             <img src="images/logow.svg" alt="māyā logo">
           </div>
           <p>
-            A MAchine learning pYthon Application for high‑energy physics.<br />
-            Enter your email below and we'll let you know when the final release is available.
+            A MAchine learning pYthon Application for high-energy physics.<br />
+            Enter your email below to receive news about māyā.
           </p>
         </header>
 
@@ -82,7 +82,7 @@
             data-netlify-honeypot="bot-field"
           >
 
-            <!-- campo anti-bot invisible -->
+            <!-- Invisible anti-bot field -->
             <p hidden>
               <label>
                 Don’t fill this out if you're human:
@@ -90,10 +90,10 @@
               </label>
             </p>
 
-            <!-- necesario para Netlify -->
+            <!-- Required by Netlify -->
             <input type="hidden" name="form-name" value="notify" />
 
-            <!-- tu campo de email -->
+            <!-- Email field -->
             <label for="email">Email address</label>
             <input
               type="email"
@@ -110,33 +110,20 @@
       </div>
     </section>
 
-    <!-- PANTALLA 2: Más información -->
-    <section class="panel" id="features">
-      <div class="inner">
-        <h2>Features</h2>
-        <p>– Fast LHCO data analysis<br>
-           – XGBoost & BDT<br>
-           – Easy interface</p>
-        <p>Stay tuned for the full release!</p>
-      </div>
-    </section>
-
-    <!-- Añade más <section class="panel"> si quieres más pantallas -->
+    <!-- PANEL 2: Beta access + student support -->
     <section class="panel" id="preorder">
   <div class="inner">
-    <h2>Pre-order <em>māyā</em></h2>
+    <h2>Join the <em>māyā</em> beta</h2>
     <p>
-      Be among the first to access <em>māyā</em>.<br>
-      The full release is expected at the end of 2025. By pre-ordering now, you'll receive early access by email, along with download links for all future updates throughout one year.
+      You can order the current beta of <em>māyā</em> now.<br>
+      Your licence includes one year of updates, and you’ll receive new download links by email as stable builds are released.
     </p>
 
     <div style="margin-top: 2em;">
       <a href="https://www.buymeacoffee.com/mayahep/e/434443" target="_blank" rel="noopener noreferrer">
         <button style="padding: 14px 28px; background-color: #FFDD00; color: #000000 !important; border: none; border-radius: 8px; font-size: 20px; font-weight: 800; cursor: pointer;">
-   Pre-order
+   Get māyā beta
 </button>
-
-
       </a>
     </div>
   </div>
@@ -152,24 +139,57 @@
     <li>
       In 
       <a href="https://internacionalizacion.buap.mx/content/becas-para-participacion-en-congresos-nacionales-e-internacionales-en-investigacion-2022#:~:text=Al%20alumnado%20de%20licenciatura%20de,conforme%20a%20las%20siguientes%20bases" target="_blank">
-        2022, BUAP awarded one‑off grants
+        2022, BUAP awarded one-off grants
       </a> 
-      averaging approximately $320 USD per student — but these were limited in number and often fell short of covering all expenses.
+      averaging approximately $320 USD per student — but these were limited in number and often fell short of covering all expenses.
     </li>
     <li>
       <a href="https://www.comecso.com/ciencias-sociales-agenda-nacional/cs/article/view/552/1427" target="_blank">
-        Over 41 % of BUAP students come from low‑income backgrounds
+        Over 41 % of BUAP students come from low-income backgrounds
       </a>, underscoring the financial challenges many face when seeking academic travel opportunities.
     </li>
   </ul>
  <div style="display: flex; justify-content: center; margin-top: 2em;">
   <p style="max-width: 700px; text-align: center;">
-    This initiative offers an <strong>alternative route of support</strong> for students who may not access — or fully benefit from — official funding, with proceeds from each pre‑order going directly to help them attend national and international HEP conferences.
+    This initiative offers an <strong>alternative route of support</strong> for students who may not access — or fully benefit from — official funding, with proceeds from each pre-order going directly to help them attend national and international HEP conferences.
   </p>
 </div>
 </section>
 
+    <!-- PANEL 3: Features (moved to bottom, clearer HEP explanation) -->
+    <section class="panel" id="features">
+      <div class="inner">
+        <h2>Features</h2>
+        <p>
+          <em>māyā</em> is a GUI workflow for collider studies, starting from detector-level Monte Carlo samples.
+          It reads standard LHCO or CSV files (e.g. Delphes outputs), builds an analysis dataset, and takes you from raw events to ML driven sensitivity in a few steps.
+        </p>
 
+        <ul>
+          <li>
+            <strong>Final-state definition & observables:</strong> choose object types and multiplicities
+            (γ, e±, μ±, jets, MET), define pairs/triplets/quartets, and compute key variables such as
+            invariant mass, transverse mass (with MET), ΔR separations and related kinematic quantities.
+          </li>
+          <li>
+            <strong>Event processing & plots:</strong> load multiple signal/background files, optionally filter
+            events that fail your object requirements, export processed CSVs, and visualise distributions with
+            overlaid histograms plus Gaussian, KDE or exponential fits for quick shape interpretation.
+          </li>
+          <li>
+            <strong>BDT training:</strong> train an XGBoost classifier for signal–background separation,
+            with optional Optuna hyperparameter tuning. The tool outputs ROC and precision–recall curves,
+            confusion matrices and feature-importance rankings. Missing values can be handled directly or via
+            optional MiceForest imputation.
+          </li>
+          <li>
+            <strong>Sensitivity scan:</strong> apply manual cuts if desired, then scan classifier-score thresholds
+            and compute expected significances S/√(S+B) for your chosen cross sections and integrated luminosity,
+            automatically finding the optimal working point.
+          </li>
+        </ul>
+      </div>
+    </section>
 
   </div>
 
